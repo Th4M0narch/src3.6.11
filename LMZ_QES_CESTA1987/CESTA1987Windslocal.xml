@@ -1,0 +1,67 @@
+<QESWindsParameters>
+  <simulationParameters>
+    <halo_x>0</halo_x>
+    <halo_y>0</halo_y>
+
+    <!-- Local QES coordinates are used; no unsupported Bordeaux UTM origin is invented. -->
+    <originFlag>0</originFlag>
+
+    <!--
+      MODEL DOMAIN CHOICE:
+      700 m x 700 m x 50 m, consistent with the CESTA D3 plume/sampler coordinate system.
+      This contains the source at (550,100) and the full 500 m observation arc.
+    -->
+    <domain>700 700 100</domain>
+    <cellSize>1 1 0.5</cellSize>
+    <verticalStretching>0</verticalStretching>
+
+    <!-- Baseline D3 case uses the release-period mean wind field. -->
+    <totalTimeIncrements>1</totalTimeIncrements>
+
+    <maxIterations>500</maxIterations>
+    <tolerance>1e-9</tolerance>
+    <meshTypeFlag>0</meshTypeFlag>
+    <domainRotation>0</domainRotation>
+
+    <readCoefficientsFlag>0</readCoefficientsFlag>
+    <COEFF>cesta1987_windsWk.nc</COEFF>
+  </simulationParameters>
+
+  <metParams>
+    <z0_domain_flag>0</z0_domain_flag>
+
+    <!--
+      Recommended: ONE measured vertical profile.
+      QES-Winds extends a single sensor/profile uniformly over the domain.
+      QES-Winds User Guide, Sec. 5/5.1.
+    -->
+    <sensorName>/home/wzy/QES-Public-main/LMZ_QES_CESTA1987/sensor1.xml</sensorName>
+    <sensorName>/home/wzy/QES-Public-main/LMZ_QES_CESTA1987/sensor2.xml</sensorName>
+    <sensorName>/home/wzy/QES-Public-main/LMZ_QES_CESTA1987/sensor3.xml</sensorName>
+  </metParams>
+
+  <turbParams>
+    <sigmaConst>2.5 1.9 1.25</sigmaConst>
+    <method>3</method>
+    <samples>2000</samples>
+    <backgroundMixing>0.001</backgroundMixing>
+
+    <turbUpperBound>25</turbUpperBound>
+    <terrainWallFlag>2</terrainWallFlag>
+    <buildingWallFlag>0</buildingWallFlag>
+    <save>false</save>
+    <LMfile>Building_sanm_correct.nc</LMfile>
+    <nonLocalMixing>false</nonLocalMixing>
+
+    <!--
+      CESTA report conclusion: most plausible stability category = Class C.
+      Report p12 / PDF p21; also simulation setup report p57 / PDF p68.
+    -->
+    <stabilityClass>C</stabilityClass>
+  </turbParams>
+
+  <fileOptions>
+    <outputFlag>1</outputFlag>
+    <outputFields>all</outputFields>
+  </fileOptions>
+</QESWindsParameters>

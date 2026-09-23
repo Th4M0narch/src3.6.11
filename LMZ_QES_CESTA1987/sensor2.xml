@@ -1,0 +1,61 @@
+<sensor>
+  <!--
+    Compatibility duplicate profile #2
+    Local placement is a MODEL COORDINATE choice.
+    For the recommended run only sensor1.xml is needed.
+  -->
+  <site_coord_flag>1</site_coord_flag>
+  <site_xcoord>100</site_xcoord>
+  <site_ycoord>100</site_ycoord>
+
+  <timeSeries>
+    <!-- Keep the synthetic QES clock consistent with the current plume setup. -->
+    <timeStamp>2020-01-01T01:00:00</timeStamp>
+
+    <!--
+      boundaryLayerFlag=4 = direct data-entry vertical profile.
+      QES-Winds User Guide, Sec. 5.1, p17.
+    -->
+    <boundaryLayerFlag>4</boundaryLayerFlag>
+
+    <!--
+      MODEL-DERIVED placeholder, not directly reported by CESTA:
+      neutral log-fit to the four mean wind-speed points gives z0 ~ 0.00121 m.
+      With flag=4, the entered velocity profile below is used directly.
+    -->
+    <siteZ0>0.00121</siteZ0>
+    <reciprocal>0.0</reciprocal>
+
+    <!--
+      CESTA 1987 release-period mean wind-speed profile:
+        z=2 m  : 2.8 m/s
+        z=10 m : 3.3 m/s
+        z=18 m : 3.6 m/s
+        z=28 m : 3.8 m/s
+      Source: report Table 2.1A, report p8 / PDF p17;
+      repeated in Sec. 9.1, report p57 / PDF p68.
+    -->
+    <height>2.0</height>
+    <height>10.0</height>
+    <height>18.0</height>
+    <height>28.0</height>
+
+    <speed>2.8</speed>
+    <speed>3.3</speed>
+    <speed>3.6</speed>
+    <speed>3.8</speed>
+
+    <!--
+      IMPORTANT DIRECTION CONVENTION:
+      CESTA uses 302.7 deg as the downwind/plume-path azimuth.
+      QES-Winds defines sensor direction as wind COMING FROM.
+      Therefore the QES input is 302.7 - 180 = 122.7 deg.
+      The same direction is used at all four heights for the baseline run,
+      matching the CESTA report's Sec. 9.1 modeling setup.
+    -->
+    <direction>122.7</direction>
+    <direction>122.7</direction>
+    <direction>122.7</direction>
+    <direction>122.7</direction>
+  </timeSeries>
+</sensor>
